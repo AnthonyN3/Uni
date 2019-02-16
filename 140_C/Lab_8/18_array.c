@@ -17,6 +17,8 @@ float wCounter = 0;
 char convert2Letters;
 int a[size];
 
+//Complex program working with arrays and functions
+
 // Main
 int main(void)
 {

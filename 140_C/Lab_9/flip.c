@@ -4,6 +4,8 @@
 
 int flip();
 
+//Calculate the total numbers of heads and tails, when flipping a coin 100 times randomly (using srand)
+
 int main (void)
 {
 	int toss, totalHeads, totalTails;	

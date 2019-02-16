@@ -1,4 +1,12 @@
 #include <stdio.h>
+
+/*
+	Calculate Factorial of a positive integer.. using multiple data types (int cannot go as big as per say long) 
+	We will also check the values stored using the data types: 
+	short,unshort,int,unsigned int,long, unsigned long, long long, unsigned long long, long double
+
+*/
+
 int main(void)
 {
     int x;

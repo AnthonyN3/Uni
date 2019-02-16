@@ -4,6 +4,8 @@
 #include <time.h>
 //time_t t;
 
+//
+
 int main (void)
 {
 	int x,k,n,rk,y;

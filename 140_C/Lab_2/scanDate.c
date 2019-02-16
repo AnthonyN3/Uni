@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//Taking users input for a date in (dd/mm/yyyy) and translating it into a sentance
+
 int main (void)
 {
 	int month, day, year;

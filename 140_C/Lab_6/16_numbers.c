@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+
 int main (void)
 {
 	int x,k,n,rk,y; 

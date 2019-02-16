@@ -1,5 +1,7 @@
 #include <stdio.h> 
 
+//Calculating the factorial of a number
+
 int main (void)
 {
 	int x,product = 1;

@@ -3,6 +3,8 @@
 
 float calculateCharges(float hours);
 
+//Calculate the charge per car that is parked in a parking space depending on the users input of how long 3 cars are parked for
+
 int main (void)
 {
 	float hours[3];
