@@ -1,0 +1,49 @@
+	Question 1(b) 
+			Anthony Nguyen 
+			
+	The reason why it will give a incorrect output for certain data types 
+	is due to the value/integer being to high. Therefore it causes an 
+	value overflow and starts giving incorrect outputs.
+	
+	2!
+	Correct results for all data type
+
+	3!
+	Correct results for all data type
+
+	4!
+	Correct result for all data types
+
+	5!
+	Correct result for all data types
+	
+	6!
+	Correct result for all data types
+	
+	7!
+	Correct result for all data types
+	
+	8!
+	Incorrect for: short
+	
+	9!,10!,11!,12! 
+	Incorrect for: short, unsigned short
+
+	13! --all the way to---> 20!
+	Incorrect for: short, unsigned short, int, unsigned int
+	
+	
+	25!,50!,70!
+	Incorrect for: ALL but long double 
+	(However only goes 5 decimal places instead of 9)
+	
+	100!,450!,1000!
+	Incorrect for: ALL but long double 
+	(However only goes 5 decimal places instead of 9)
+	
+	3249!, 10000!, 25206!, 100000!, 205023!, 100000!, 10^100!
+	Incorrect for all data types 
+	(Note: long double prints out "inf"(infinite) ) 
+	
+	
+	

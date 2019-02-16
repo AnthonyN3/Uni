@@ -1,0 +1,30 @@
+			Assignment 5
+				Anthony Nguyen
+				
+				
+				
+1) go to "a5_digits_fun.c" file
+
+2) go to "a5_polynomial.rap" file
+
+3) go to "a5_polynomial.c" file
+
+
+
+4)
+
+(a)
+Parameter(s): None
+Variable(s): b(inside f),d,c
+
+(b) 
+Parameter(s): a
+Variable(s): c (inside g), b, a
+
+(c)
+Parameter(s): none
+Varialbes(s): a,b,c(inside g) ,d 
+
+(d) 
+Parameter(s): none
+Variable(s): c(inside main) ,d, b

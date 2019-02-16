@@ -1,0 +1,20 @@
+        			(60-140) Assignment 2
+		Anthony Nguyen		id: 104792283
+		
+1)	(a) "6 16"
+	(b) "6 -7"
+	(c) "6 23"
+	(d) "6 15"
+
+2) 	Go to "a2_2digits.rap" file
+
+3)	Go to "a2_2digits.c" file
+
+4)	(a) "1 3 4 5"
+	(b) "0 7 8 9"
+	(c) "1 8 8 9"
+	(d) "1 2 1 1"
+	
+5)	Go to "a2_broker.rap" file
+
+6)	Go to "a2_broker.c" file	

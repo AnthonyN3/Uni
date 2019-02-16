@@ -1,0 +1,60 @@
+			(60-140) Assignment 3
+			Anthony Nguyen		id: 104792283
+
+1) The output of the program produce:"onetwo"
+
+2) 
+	(a) 							
+	for(i=1; i <= 128; i *= 2){
+		printf("%d ", i);
+	}
+		
+	(b)
+	for(i = 9384; i > 0; i /=2){
+		printf("%d ", i);
+	}
+3) 
+
+	(a) Before: 1 2 4 8 16 32 64 128 
+		after : 1 2 4 8 16 32 64 128
+		
+	(b) before: 9384 4692 2346 1173 586 293 146 73 36 18 9 4 2 1
+		after : 9384 4692 2346 1173 586 293 146 73 36 18 9 4 2 1
+		
+4) 
+
+(a)
+	if ( a > n && n > 0)
+		printf("Good");
+	else
+		printf("Hello!");
+	
+	****Output: "Hello!"****
+	
+		
+(b)						/*NOTE: You can also use a while loop*/
+	for( int k = 1; k  <= 10 ; k++)
+	{
+		printf("%d ", k);
+	}
+	****Output: "1 2 3 4 5 6 7 8 9 10"****
+	
+(c) 
+	int k = 1;
+	do{
+	printf("%d ", k);
+	k++;
+	} while(k <= 10)
+	
+	*****Output: "1 2 3 5 6 7 8 9 10"*****
+	
+(d)				/*NOTE: You can also use a while loop*/
+	for( float x = 10.0f ; x > 1.001f ; x = sqrt(x))
+	{
+		printf("%.3f ", x); /* Assuming that it outputs with 3 decimal places*/
+	}
+	****Output: "10 3.162 1.778 1.334 1.155 1.075 1.037 1.018 1.009 1.005 1.002 1.001"**
+
+5) Go to "a3_digits.rap" file
+	
+6) Go to "a3_digits.c" file

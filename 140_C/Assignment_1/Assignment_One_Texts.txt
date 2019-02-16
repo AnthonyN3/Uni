@@ -1,0 +1,29 @@
+		(60-140) ASSIGNMENT
+    Anthony Nguyen    id: 104792283
+	
+
+1)  (a)for  (b)If  (c)main  (d)printf  (e)while
+
+	The following that are keywords in C are; (a)for, and(e)while 
+	(NOTE: (b) isnt a keyworkd because I is capalized) 
+	
+2) In the dweight.c program the spaces that are actually essential to the program are
+	between  
+	-"int main(void)"
+	-"int height,length,width,volume,weight;"
+	-"return 0"
+	
+3) Go to "a1_sphere.rap" file
+
+4) Go to "a1_sphere.c" file
+
+5)  (a)"    86,1040"
+	(b)" 3.02530e+01"
+	(c)"83.1620"
+	(d)"1e-06"
+
+6) Go to "a1_purchase.rap" file
+
+7) go to "a1_purchase.c" file
+
+
