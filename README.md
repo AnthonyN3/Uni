@@ -1,3 +1,3 @@
 # Uni
 
-Just A <Collection> of uni programs..
+Just A COLLECTION of uni programs..
