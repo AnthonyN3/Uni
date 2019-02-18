@@ -1,0 +1,16 @@
+1000
+Mon Apr 02 20:44:33 2018
+Jim SMith
+my first tweet
+1001
+Mon Apr 02 20:44:36 2018
+Jim SMith
+my second tweet
+1002
+Mon Apr 02 20:45:32 2018
+Anthony Nguyen
+my third tweet
+1003
+Mon Apr 02 20:45:55 2018
+Zack Zoro
+my last tweet
