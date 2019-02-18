@@ -11,7 +11,7 @@ public class TicTacToe {
 	
 	public static void main(String []args)
 	{	
-		//Craetes an instaces of the game
+		//Creates an instaces of the game
 		game myGame = new game();
 		
 		//starts the tictatoe game
