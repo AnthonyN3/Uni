@@ -74,6 +74,7 @@ main proc
      movzx eax, ax
      add eax, Avar
      sub eax, Cvar
+     mov Zvar, eax
 
      ;writes out binary, decimal and hexadecimal in seperate lines
      call WriteBin
