@@ -2,6 +2,15 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+/*
+	Author: Anthony Nguyen
+	Date: Feb 3, 2019
+
+	(NOTE: ALL images are in .ppm p6 file)
+	This program will take 3 arguments in the command line: 1. ImageOne 2. ImageTwo 3.NameOftheNewSavedImage
+	With these images, it will take the second image and put it onto the top right of the first image (essentially merging)
+*/
+
 int main(int argc, char *argv[])
 {
         int f1,f2;
@@ -56,8 +65,8 @@ int main(int argc, char *argv[])
 
 		if( i <= 1)
 		{
-	        	read(f1, &buffer, 1);
-	                temp = buffer - '0';
+	       	read(f1, &buffer, 1);
+	        temp = buffer - '0';
 			
 			while( read(f1, &buffer,1) > 0 &&  buffer != ' ' &&  buffer != '\n'  )
 			{
@@ -121,7 +130,7 @@ int main(int argc, char *argv[])
 	char empty;
 	int check = 0;
 	count = 0;
-	while(count++ < dimen[0]*dimen[1]*3)
+	while(count++ < dimen[0]*dimen[1]*3)	//NOTE: we read 1 byte each time and each pixel contains 3 bytes (RGB).. Therefore we must loop totalPixels*3 times
 	{	
 		check++;
 		if( check % (dimen[0]*3-dimen[2]*3+1) == 0 && count <  3*dimen[0]*dimen[3]   ) 		//checks if we are at the top right cornor if so, we write contents of image 2

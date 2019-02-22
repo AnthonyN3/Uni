@@ -1,0 +1,9 @@
+Selector and test are scripts that can be ran on bash... The headtail text file is a sample file in which you can use those scripts with...
+
+Essentially, the scripts will use commands grep, cut, head and tail to write a bash script called selector. It accepts
+two words as arguments, and prints out the portion of the given file between the line of
+the first appearance of the first word (this line included) and the line of the first
+appearance of the second word (this line included).
+
+it is assumed that the first occurrence of the first word always appears earlier than the
+fist occurrence of the second word.

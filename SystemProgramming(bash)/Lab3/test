@@ -1,0 +1,5 @@
+one=$(grep -n $1 < headtail | cut -d ":" -f1 | head -n 1)
+two=$(grep -n $2 < headtail | cut -d ":" -f1 | head -n 1)
+head -n +$two headtail | tail -n +$one
+echo $one
+echo $two
