@@ -1,2 +1,4 @@
+* linguist-vendored
+*.js linguist-vendored=true
 *.rb linguist-language=Java
 *.rb linguist-language=C
