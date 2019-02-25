@@ -1,3 +1,3 @@
 # University.
 
-Just A COLLECTION of uni programs..
+Languages Uni = new Languages(Java, C, Assembly);
