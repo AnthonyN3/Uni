@@ -1,0 +1,13 @@
+#!/bin/bash	
+# Above is needed in order for the C program to redirect into this bash script
+
+var=`cat storage`	# Store the text value from storage into the variable var... 	
+var=$((var+8))		# Add 8 onto the integer version of the stored "Text-Based" value stored in Var....All variables store text-based values and not Integers
+if((var>=100))		#(()) used for arithmetic if statement 
+then
+	echo from producer: Now I will take a rest!
+else
+	echo $var > storage
+	echo from producer: current total is $var
+	./consumer	#Call on the C file (Redirect)
+fi
