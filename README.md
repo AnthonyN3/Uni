@@ -1,3 +1,5 @@
 # University.
 
-Languages Uni = new Languages(Java, C, Assembly);
+```java
+Languages uni = new Languages(Java, C, Assembly);
+```
