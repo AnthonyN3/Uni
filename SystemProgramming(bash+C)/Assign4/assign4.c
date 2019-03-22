@@ -1,19 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <signal.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <sys/signal.h>
 
 /*
 	Author: Anthony Nguyen
-	
-	Assignment 2 revision!
+
+	Remaster of Assign2 but using Signals
+
 */
 
-
-void myALarmHandler(int dummy){};
-
+//used to overwrite the default signal "SIGALRM" with one that does nothing
+//however, it will unpause paused proccess when kill() is sent to it
+void alarmHandler(int dummy) {};
 
 //Function Prototype
 int ColorToDecimal ( char colorName[] );
@@ -35,6 +38,7 @@ int main(int argc, char *argv[])
 	//Write a generic header
 	char headerDefault[] = "P6\n1000 1000\n255\n";
 	write(f1, headerDefault, strlen(headerDefault));	
+	close(f1);
 
 	//Used to store the base-10 version of RGB in form BGR (because littleEndian)
 	int colors[5];
@@ -53,14 +57,16 @@ int main(int argc, char *argv[])
 
 	}
 
-	pid_t pidArr[10];
-	signal(SIGALRM, myALarmHandler);
 
-	for(int i = 0 ; i < 10 ; i++)
+	signal(SIGALRM, alarmHandler);
+
+	pid_t pidArr[10];	//Array that holds all the childrens pid
+
+	for(int i = 0 ; i < 10; i++)
 	{
-		if(  (pidArr[i] = fork()) == 0 )
-		{
-			break;	//in order to break the child out of the loop (we only want to parent to be looping and making 10 childrens and storng their PID)
+		if( (pidArr[i] = fork()) == 0 )	//create children in parralel to run the botton all together
+		{	
+			break;	//break so that each children doesn't run the loop (making its own child)
 		}
 	}
 
@@ -69,6 +75,15 @@ int main(int argc, char *argv[])
 	{	
 		if(pidArr[childNum] == 0)
 		{
+			//re open the file
+			int f1 = open(argv[1], O_WRONLY, 0722);
+			//lseeks in its desingated position (based on which child it is)
+			//lseek(f1, (100*1000*3*childNum + headerDefault , SEEK_SET);	
+
+			int var = childNum*300000 + strlen(headerDefault);
+			lseek(f1,  var , SEEK_SET);	
+			
+
 			//If there are 10 childrens writing and the dimenions are 1000x1000 pixels (note: we write pixel by pixel)
 			//then each child needs to write a total of 100 rows (equivalent to 100*1000 == 100,000 pixels or 300,000 bytes) (NOTE: 1 pixel = 3 bytes [RGB])
 			for(int rowNum = 0 ; rowNum < 100 ; rowNum++)
@@ -144,21 +159,23 @@ int main(int argc, char *argv[])
 					}
 				}
 			}
-			pause();	//pause each child
+			pause();
 			kill(getppid(), SIGALRM);
-			exit(1);	//terminate the fork() child process
-
+			close(f1);
+			return 0;
 		}
+		//NOTE: wait isnt used here anymore...
 	}
 
-	sleep(5);
-		for (int x = 0; x < 10; x++) 
-		{
-			kill(pidArr[x], SIGALRM);
-			pause();
-		}
+	sleep(3);
+	//used to communicate with childrens
+	for(int i = 0 ; i< 10 ; i++)
+	{
+		printf("Telling child %d to wake up\n", pidArr[i]);
+		kill(pidArr[i], SIGALRM);
+		pause();
+	}
 
-	close(f1);
     return 0;
 }
 
