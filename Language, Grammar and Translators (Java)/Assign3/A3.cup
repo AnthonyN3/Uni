@@ -1,0 +1,51 @@
+import java.io.*;
+
+terminal  ID, NUM, QUOTE, PLUS, MINUS, TIMES, DIVIDE, OP, CP, SEMICOLON, COMMA, ASSIGN, EQUAL, NOTEQUAL, IF, ELSE, WRITE, READ, RETURN, BEGIN, END, MAIN, TYPE;
+
+non terminal Integer MethodDec, _Program, Program;
+non terminal formalPram, _formalPrams, formalPrams, Block, Statment, _stm ,LocalVarDec, Assign, ReturnStatment, Ifstmt, writeStmt, readStmt, Exp, _Exp , MultiExp, PrimExp, _PrimExp , boolExp, _ActualPram , ActualPram;
+
+precedence left ELSE;
+
+Program ::= MethodDec:m _Program:p {:
+		RESULT = m +p; :};
+
+_Program ::= MethodDec:m _Program:p {: RESULT = m+p;:}
+		| {: RESULT = 0; :}
+		;
+		
+MethodDec ::= TYPE MAIN ID OP formalPrams CP Block{: RESULT =1 ;:}
+		| TYPE ID OP formalPrams CP Block {: RESULT =1;:};
+
+formalPrams ::= formalPram  _formalPrams | ;
+_formalPrams ::= COMMA formalPram _formalPrams | ;
+formalPram ::= TYPE ID ;
+
+Block ::= BEGIN Statment _stm END ;
+_stm ::= Statment _stm | ;
+
+Statment ::= Block | LocalVarDec | Assign | ReturnStatment 
+		|Ifstmt | writeStmt |readStmt;
+
+LocalVarDec ::= TYPE ID SEMICOLON | TYPE Assign ;
+
+Assign ::= ID ASSIGN Exp SEMICOLON |
+		ID ASSIGN QUOTE SEMICOLON ;
+
+ReturnStatment ::= RETURN Exp SEMICOLON ;
+
+Ifstmt ::= IF OP boolExp CP Statment | IF OP boolExp CP Statment ELSE Statment ;
+
+writeStmt ::= WRITE OP Exp COMMA QUOTE CP SEMICOLON ;
+readStmt ::= READ OP ID COMMA QUOTE CP SEMICOLON ;
+
+Exp ::= MultiExp _Exp ;
+_Exp ::= PLUS MultiExp _Exp | MINUS MultiExp _Exp | ;
+MultiExp ::= PrimExp _PrimExp ;
+_PrimExp ::= TIMES PrimExp _PrimExp | DIVIDE PrimExp _PrimExp | ;
+
+PrimExp ::= NUM | ID | OP Exp CP | ID OP ActualPram CP ;
+
+boolExp ::= Exp EQUAL Exp | Exp NOTEQUAL Exp ;
+ActualPram ::= Exp _ActualPram  | ;
+_ActualPram ::= COMMA Exp _ActualPram | ;

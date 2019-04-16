@@ -1,0 +1,106 @@
+import java.io.*; 
+
+terminal ID, NUM, QUOTE, PLUS, MINUS, TIMES, DIVIDE, OP, CP, SEMICOLON, COMMA, ASSIGN, EQUAL, NOTEQUAL, IF, ELSE, WRITE, READ, RETURN, BEGIN, END, MAIN, INT, REAL, STRING;
+
+
+non terminal String MethodDec, _Program, Program, formalPram, _formalPrams, formalPrams, Block, Statment, _stm ,LocalVarDec, Assign, ReturnStatment, Ifstmt, writeStmt, readStmt, Exp, _Exp , MultiExp, PrimExp, _PrimExp , boolExp, _ActualPram , ActualPram, TYPE;
+
+precedence left ELSE;
+
+Program ::= MethodDec:M _Program:P {:RESULT = "import java.io.*;\npublic class A4 {\n static BufferedReader $br;\n static BufferedWriter $bw;\n" + M + P + "}"; :};
+
+
+_Program ::= MethodDec:m _Program:p {: RESULT = m+p;:}
+		| {: RESULT = ""; :}
+		;
+		
+
+TYPE ::= INT {: RESULT = " int "; :} 
+		| REAL {: RESULT = " double "; :}
+		| STRING {: RESULT = " String "; :}
+		;
+		
+MethodDec ::= TYPE MAIN ID OP formalPrams CP Block:B {: RESULT ="public static void main(String [] args) throws Exception\n" + B; ;:}
+		| TYPE:T ID:I OP formalPrams:F CP Block:B {: RESULT ="static"+T+I+" ( "+F+" ) throws Exception " + B +"\n"; :};
+
+formalPrams ::= formalPram:F  _formalPrams:P {: RESULT = F+P; :}
+	| {: RESULT = ""; :}
+	;
+	
+_formalPrams ::= COMMA formalPram:F _formalPrams:P {: RESULT = " , "+F+P; :} 
+	| {: RESULT = ""; :} 
+	;
+	
+formalPram ::= TYPE:T ID:I {:RESULT = T + I ;:} ;
+
+Block ::= BEGIN Statment:S _stm:T END {: RESULT = " { "+S+T+" } "; :}
+		;
+	
+_stm ::= Statment:S _stm:T  {: RESULT =  S+T; :}
+	| {: RESULT = ""; :} 
+	;
+
+Statment ::= Block:B {: RESULT = B; :} 
+		| LocalVarDec:L {: RESULT = L; :}
+		| Assign:A {: RESULT = A; :}
+		| ReturnStatment:R {: RESULT = R; :} 
+		| Ifstmt:I {: RESULT=I; :}
+		| writeStmt:W {: RESULT = W; :} 
+		| readStmt:R {: RESULT = R; :}	
+		;
+
+LocalVarDec ::= TYPE:T ID:I SEMICOLON {: RESULT = T+I+";"; :} 
+	| TYPE:T Assign:A {: RESULT = T+A; :}
+	;
+
+Assign ::= ID:I ASSIGN Exp:E SEMICOLON {: RESULT = I+"="+E+";\n"; :}
+		|ID:I ASSIGN QUOTE:Q SEMICOLON {: RESULT = I+"="+Q+";\n"; :}
+		;
+
+ReturnStatment ::= RETURN Exp:E SEMICOLON {: RESULT = "return "+E+";\n" ; :}
+		;
+
+Ifstmt ::= IF OP boolExp:B CP Statment:S {: RESULT = "if ( "+B+" ) " +S ; :}
+	| IF OP boolExp:B CP Statment:S ELSE Statment:T {: RESULT = "if ( "+B+" ) "+S+" else "+T; :}
+	;
+
+writeStmt ::= WRITE OP Exp:E COMMA QUOTE:Q CP SEMICOLON {: RESULT = " $bw=new BufferedWriter(new FileWriter("+Q+ "));\n $bw.write(\"\"+("+ E + "));\n $bw.close();\n" ; :} 
+		;
+
+readStmt ::= READ OP ID:I COMMA QUOTE:Q CP SEMICOLON {: RESULT = " $br=new BufferedReader(new FileReader("+Q+ "));\n " + I + "=new Integer($br.readLine()).intValue(); $br.close();\n"; :}
+		;
+
+Exp ::= MultiExp:M _Exp:E {: RESULT = M+E; :}
+	;
+
+_Exp ::= PLUS MultiExp:M _Exp:E {: RESULT = "+"+M+E; :}
+	| MINUS MultiExp:M _Exp:E 	{: RESULT = "-"+M+E; :}
+	|{: RESULT = ""; :} 
+	;
+
+MultiExp ::= PrimExp:P _PrimExp:X {: RESULT = P+X; :} 
+		;
+
+_PrimExp ::= TIMES PrimExp:X _PrimExp:Y {: RESULT = "*"+X+Y; :}
+	| DIVIDE PrimExp:X _PrimExp:Y {: RESULT = "/"+X+Y; :}
+	| {: RESULT = ""; :}
+	;
+
+PrimExp ::= NUM:N {: RESULT = N+""; :}
+	| ID:I {: RESULT = I+""; :}
+	| OP Exp:E CP {: RESULT = "("+E+")"; :}
+	| ID:I OP ActualPram:A CP {: RESULT = I+"("+A+")"; :} 
+	;
+
+boolExp ::= Exp:E EQUAL Exp:P {: RESULT = E+"=="+P; :}
+	| Exp:E NOTEQUAL Exp:P {: RESULT = E+"!="+P; :}
+	;
+
+ActualPram ::= Exp:E _ActualPram:A {: RESULT = E+A; :}
+	|{: RESULT = ""; :} 
+	;
+
+
+_ActualPram ::= COMMA Exp:E _ActualPram:A {: RESULT = ","+E+A; :} 
+	|{: RESULT = ""; :} 
+	;
