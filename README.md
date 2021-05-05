@@ -1,7 +1,7 @@
 <div align="center">
 <h1>University</h1>
 <b>🏫 some school stuff :></b>
-</div>
+ 
 
 | Course Code | Course Name |
 | ----------- | ----------- |
@@ -15,3 +15,4 @@
 | ![COMP-3400](https://github.com/AnthonyN3/school/tree/master/COMP-3400) | Advanced Object Oriented System Design Using C++ |
 | ![COMP-4400](https://github.com/AnthonyN3/school/tree/master/COMP-4400) | Principles of Programming Languages |
 
+</div>
