@@ -5,7 +5,7 @@
 
 | Course Code | Course Name |
 | ----------- | ----------- |
-| ![COMP-1440](https://github.com/AnthonyN3/school/tree/master/COMP-1440) | Intro to Programming and Algorithms I |
+| ![COMP-1400](https://github.com/AnthonyN3/school/tree/master/COMP-1400) | Intro to Programming and Algorithms I |
 | ![COMP-1410](https://github.com/AnthonyN3/school/tree/master/COMP-1410) | Intro to Programming and Algorithms II |
 | ![COMP-2120](https://github.com/AnthonyN3/school/tree/master/COMP-2120) | Object Oriented Programming Using Java |
 | ![COMP-2140](https://github.com/AnthonyN3/school/tree/master/COMP-2140) | Computer Languages, Grammars and Translators 
